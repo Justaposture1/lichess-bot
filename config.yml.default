@@ -1,9 +1,9 @@
-token: "xxxxxxxxxxxxxxxxxxxxxx"    # Lichess OAuth2 Token.
+token: "lip_Q4ZL5VNYjK7PrnI0Ll14"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"        # Lichess base URL.
 
 engine:                            # Engine settings.
   dir: "./engines/"                # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "engine_name"              # Binary name of the engine to use.
+  name: "stockfish"              # Binary name of the engine to use.
   working_dir: ""                  # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
                                    # NOTE: If working_dir is set, the engine will look for files and directories relative to this directory, not where lichess-bot was launched. Absolute paths are unaffected.
   protocol: "uci"                  # "uci", "xboard" or "homemade"
@@ -25,7 +25,7 @@ engine:                            # Engine settings.
     max_depth: 20                  # How many moves from the start to take from the book.
 
   draw_or_resign:
-    resign_enabled: false          # Whether or not the bot should resign.
+    resign_enabled: true          # Whether or not the bot should resign.
     resign_score: -1000            # If the score is less than or equal to this value, the bot resigns (in cp).
     resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
     resign_moves: 3                # How many moves in a row the score has to be below the resign value.
@@ -87,9 +87,9 @@ engine:                            # Engine settings.
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
     Move Overhead: 100             # Increase if your bot flags games too often.
-    Threads: 4                     # Max CPU threads the engine can use.
-    Hash: 512                      # Max memory (in megabytes) the engine can allocate.
-    SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
+    Threads: 24                     # Max CPU threads the engine can use.
+    Hash: 20000                      # Max memory (in megabytes) the engine can allocate.
+#   SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
     UCI_ShowWDL: true              # Show the chance of the engine winning.
 #   go_commands:                   # Additional options to pass to the UCI go command.
 #     nodes: 1                     # Search so many nodes only.
@@ -147,8 +147,8 @@ challenge:                         # Incoming challenges.
   time_controls:                   # Time controls to accept.
     - bullet
     - blitz
-    - rapid
-    - classical
+#    - rapid
+#    - classical
 #   - correspondence
   modes:                           # Game modes to accept.
     - casual                       # Unrated games.
